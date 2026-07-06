@@ -1,0 +1,6 @@
+{
+  "name": "Litoral Raro",
+  "description": "Curadoria exclusiva e premium de sneakers raros e de alta costura sob encomenda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
