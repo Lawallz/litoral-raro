@@ -7,7 +7,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1890,
-    image: '../../assets/img/Air Max 95 Neon 3.jpg',
+    image: '/assets/img/Air Max 95 Neon 3.jpg',
     tag: 'ÚLTIMAS UNIDADES',
     colors: 'Gray/Neon',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -19,7 +19,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1750,
-    image: '../../assets/img/Air Max 95 Solar Red 1.jpg',
+    image: '/assets/img/Air Max 95 Solar Red 1.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Gray/Solar Red',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -31,7 +31,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1290,
-    image: '../../assets/img/Air Max 95 x Corteiz Black Honey 3.jpg',
+    image: '/assets/img/Air Max 95 x Corteiz Black Honey 3.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Black/Honey/Green Camo',
     sizes: [38, 40, 41, 42, 44],
@@ -43,7 +43,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Asics',
     silhouette: 'Low Top', // Já estava certo
     price: 1750,
-    image: '../../assets/img/ASICS Gel Nyc - Cream Arctic Sky 1.jpg',
+    image: '/assets/img/ASICS Gel Nyc - Cream Arctic Sky 1.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Cream/Arctic Sky',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -55,7 +55,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Corrigido de Mid Top para Low Top
     price: 3450,
-    image: '../../assets/img/Air Max DN Branco WhiteMetallic Silver 1.jpg',
+    image: '/assets/img/Air Max DN Branco WhiteMetallic Silver 1.jpg',
     tag: 'DISPONÍVEL',
     colors: 'White/Metallic Silver',
     sizes: [39, 40, 41, 42, 43],
@@ -67,7 +67,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Corrigido de Mid Top para Low Top
     price: 3450,
-    image: '../../assets/img/Air Max 95 x Corteiz Black 1.jpg',
+    image: '/assets/img/Air Max 95 x Corteiz Black 1.jpg',
     tag: 'DISPONÍVEL',
     colors: 'Black/Khaki/Camo',
     sizes: [39, 40, 41, 42, 43],
@@ -79,7 +79,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Corrigido de High Top para Low Top
     price: 4200,
-    image: '../../assets/img/Air Max Tn Triple White 2.jpg',
+    image: '/assets/img/Air Max Tn Triple White 2.jpg',
     tag: 'ÚLTIMAS UNIDADES',
     colors: 'Triple White',
     sizes: [40, 41, 42, 43, 44],
@@ -91,7 +91,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Asics',
     silhouette: 'Low Top', // Já estava certo
     price: 1750,
-    image: '../../assets/img/ASICS Gel Nyc - Oyster Grey 1.jpg',
+    image: '/assets/img/ASICS Gel Nyc - Oyster Grey 1.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Oyster Grey/Silver',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -103,7 +103,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 890,
-    image: '../../assets/img/Air Force 1 2.jpg',
+    image: '/assets/img/Air Force 1 2.jpg',
     tag: 'DISPONÍVEL',
     colors: 'White/White',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -115,7 +115,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1650,
-    image: '../../assets/img/Nike Shox TL Triple Black 1.jpg',
+    image: '/assets/img/Nike Shox TL Triple Black 1.jpg',
     tag: 'DISPONÍVEL',
     colors: 'Triple Black',
     sizes: [39, 40, 41, 42, 43, 44],
@@ -127,7 +127,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Asics',
     silhouette: 'Low Top', // Já estava certo
     price: 1100,
-    image: '../../assets/img/Asics Gel-NYC Graphite Grey Black 2.jpg',
+    image: '/assets/img/Asics Gel-NYC Graphite Grey Black 2.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Graphite Grey/Black',
     sizes: [39, 40, 41, 42, 43, 44],
@@ -139,7 +139,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1990,
-    image: '../../assets/img/Nike Shox R4 Triple White 2.jpg',
+    image: '/assets/img/Nike Shox R4 Triple White 2.jpg',
     tag: 'SOB ENCOMENDA',
     colors: 'Triple White/Silver',
     sizes: [39, 40, 41, 42, 43, 44],
@@ -151,7 +151,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top', // Já estava certo
     price: 1290,
-    image: '../../assets/img/Air Max Dn Black 1.jpg',
+    image: '/assets/img/Air Max Dn Black 1.jpg',
     tag: 'DISPONÍVEL',
     colors: 'Black/Dark Smoke Grey',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -163,7 +163,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top',
     price: 2490,
-    image: '../../assets/img/Air Force 1 Low x Cactus Plant Flea Market (CPFM) Black White.png',
+    image: '/assets/img/Air Force 1 Low x Cactus Plant Flea Market (CPFM) Black White.png',
     tag: 'DISPONÍVEL',
     colors: 'Black/White',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -175,7 +175,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top',
     price: 1890,
-    image: '../../assets/img/Air Max Tailwind V x Skepta Bloody Chrome (Red).png',
+    image: '/assets/img/Air Max Tailwind V x Skepta Bloody Chrome (Red).png',
     tag: 'DISPONÍVEL',
     colors: 'Black/Chrome/University Red',
     sizes: [39, 40, 41, 42, 43, 44],
@@ -187,7 +187,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top',
     price: 1890,
-    image: '../../assets/img/Air Max Tailwind V x Skepta Bright Blue.png',
+    image: '/assets/img/Air Max Tailwind V x Skepta Bright Blue.png',
     tag: 'DISPONÍVEL',
     colors: 'Black/Chrome/Bright Blue',
     sizes: [38, 39, 40, 41, 42, 43, 44],
@@ -199,7 +199,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     silhouette: 'Low Top',
     price: 1390,
-    image: '../../assets/img/Shox TL White Metallic Silver Pink (ou Pink Gradient).png',
+    image: '/assets/img/Shox TL White Metallic Silver Pink (ou Pink Gradient).png',
     tag: 'DISPONÍVEL',
     colors: 'White/Metallic Silver/Pink',
     sizes: [36, 37, 38, 39, 40, 41, 42],
@@ -238,28 +238,28 @@ export const processStepsData: ProcessStep[] = [
     number: '01',
     title: 'O Garimpo',
     description: 'Nossa banca acompanha o que tá rodando de mais forte nas pistas e nos blocos mundiais. Selecionamos só as estéticas mais pesadas e os modelos que realmente fazem a diferença no visual.',
-    image: '../../assets/img/O GARIMPO.png'
+    image: '/assets/img/O GARIMPO.png'
   },
   {
     id: '2',
     number: '02',
     title: 'O Desenrolo',
     description: 'Sem burocracia. Você encosta no nosso WhatsApp, a gente alinha a sua numeração ideal e fecha o valor do kit com base no mercado atual. Atendimento direto de parceiro para parceiro.',
-    image: '../../assets/img/O DESENROLO.png'
+    image: '/assets/img/O DESENROLO.png'
   },
   {
     id: '3',
     number: '03',
     title: 'O Envio ',
     description: 'Fazemos o corre da importação direto com os nossos contatos. Cada par passa por um crivo manual rigoroso onde checamos a fidelidade dos materiais, costuras e o visual final antes de despachar.',
-    image: '../../assets/img/O ENVIO.png'
+    image: '/assets/img/O ENVIO.png'
   },
   {
     id: '4',
     number: '04',
     title: 'A Entrega',
     description: 'Seu sneaker chega embalado no capricho, protegido e rastreado até a sua porta. É só receber, lançar no pé e sair com a banca mais pesada da sua quebrada.',
-    image: '../../assets/img/A ENTREGA.png'
+    image: '/assets/img/A ENTREGA.png'
   }
 ];
 
