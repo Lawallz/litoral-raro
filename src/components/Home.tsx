@@ -10,7 +10,7 @@ interface HomeProps {
 }
 
 export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
-  const [selectedBrand, setSelectedBrand] = useState<'All' | 'Nike' | 'Asics' | 'Jordan'>('All');
+  const [selectedBrand, setSelectedBrand] = useState<'All' | 'Nike' | 'Asics'>('All');
   const [emailSubscribed, setEmailSubscribed] = useState(false);
   const [emailValue, setEmailValue] = useState('');
   
@@ -106,7 +106,7 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
 
           {/* Quick Filters */}
           <div className="mt-4 md:mt-0 flex flex-wrap gap-2">
-            {(['All', 'Nike', 'Jordan', 'Asics'] as const).map((brand) => (
+            {(['All', 'Nike', 'Asics'] as const).map((brand) => (
               <button
                 key={brand}
                 onClick={() => setSelectedBrand(brand)}
