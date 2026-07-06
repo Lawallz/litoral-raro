@@ -134,18 +134,18 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
               >
                 <div>
                   {/* Image container */}
-                      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-gray-50 mb-4">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-black-100 mb-4">
                         {sneaker.tag && (
-                          <span className="absolute top-2.5 left-2.5 z-10 font-mono text-[9px] font-bold text-black uppercase tracking-widest bg-brand-accent px-2.5 py-1 rounded">
+                          <span className="absolute top-2 left-2 z-10 font-mono text-[9px] font-bold text-white uppercase tracking-widest bg-black border border-black px-2.5 py-1">
                             {sneaker.tag}
                           </span>
-                        )}
-                        <img
-                          src={sneaker.image}
-                          alt={sneaker.name}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          referrerPolicy="no-referrer"
-                        />
+                    )}
+                    <img
+                      src={sneaker.image}
+                      alt={sneaker.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
 
                     {/* Sizing popup screen within the card */}
                     {isSizeSelecting && (
@@ -204,13 +204,20 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
                     {sneaker.colors}
                   </p>
                   
+                  {/* Sneaker Price Display */}
+                  <div className="mt-2">
+                    <p className="font-mono text-base font-black text-black">
+                      R$ {sneaker.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    </p>
+                  </div>
+                  
                   <div className="mt-1 flex items-center space-x-1.5 font-mono text-[11px] text-gray-400">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
                     <span>Disponível sob encomenda</span>
                   </div>
                 </div>
 
-                                {/* Settle Action / Quote request */}
+                {/* Settle Action / Quote request */}
                 <div className="mt-4 pt-3 border-t border-gray-50 flex items-center justify-end">
                   <button
                     onClick={() => {
@@ -219,7 +226,7 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
                     }}
                     className="w-full rounded-lg bg-black text-white text-[10px] font-bold font-mono uppercase tracking-wider py-2.5 hover:bg-neutral-800 transition-colors text-center"
                   >
-                    Pedir Orçamento
+                    Selecionar Tamanho
                   </button>
                 </div>
               </div>

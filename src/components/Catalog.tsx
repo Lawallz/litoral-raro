@@ -232,9 +232,6 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
               })}
             </div>
           </div>
-
-          {/* Price Range */}
-          
         </aside>
 
         {/* Products Panel (Right - 3/4) */}
@@ -365,119 +362,105 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                     className="group relative flex flex-col justify-between overflow-hidden bg-white rounded-2xl border border-gray-100 p-3 shadow-sm hover:shadow-luxe hover:border-black/5 transition-all duration-300"
                   >
                     <div>
-  {/* Image container - QUADRADINHO E RETO */}
-  <div className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-100 mb-4">
-    {sneaker.tag && (
-      <span className="absolute top-2 left-2 z-10 font-mono text-[9px] font-bold text-white uppercase tracking-widest bg-black border border-zinc-800 px-2.5 py-1">
-        {sneaker.tag}
-      </span>
-    )}
-    <img
-      src={sneaker.image}
-      alt={sneaker.name}
-      className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-102"
-      referrerPolicy="no-referrer"
-    />
+                      {/* Image container - QUADRADINHO E RETO */}
+                      <div className="relative aspect-[3/4] w-full overflow-hidden bg-black-100 mb-4">
+                        {sneaker.tag && (
+                          <span className="absolute top-2 left-2 z-10 font-mono text-[9px] font-bold text-white uppercase tracking-widest bg-black border border-black px-2.5 py-1">
+                            {sneaker.tag}
+                          </span>
+                        )}
+                        <img
+                          src={sneaker.image}
+                          alt={sneaker.name}
+                          className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-102"
+                          referrerPolicy="no-referrer"
+                        />
 
-    {/* Card Size Selection layer */}
-    {isSizeSelecting && (
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-xs p-4 flex flex-col justify-between text-white z-20">
-        <div>
-          <p className="font-mono text-[10px] text-brand-accent uppercase tracking-wider font-bold mb-2">
-            Selecione seu tamanho BR:
-          </p>
-          <div className="grid grid-cols-4 gap-1.5">
-            {sneaker.sizes.map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={`font-mono text-xs py-2 border transition-all ${
-                  selectedSize === size
-                    ? 'bg-brand-accent border-brand-accent text-black font-extrabold'
-                    : 'border-white/10 hover:border-white/40 text-white'
-                }`}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-        </div>
+                        {/* Card Size Selection layer */}
+                        {isSizeSelecting && (
+                          <div className="absolute inset-0 bg-black/95 backdrop-blur-xs p-4 flex flex-col justify-between text-white z-20">
+                            <div>
+                              <p className="font-mono text-[10px] text-brand-accent uppercase tracking-wider font-bold mb-2">
+                                Selecione seu tamanho BR:
+                              </p>
+                              <div className="grid grid-cols-4 gap-1.5">
+                                {sneaker.sizes.map((size) => (
+                                  <button
+                                    key={size}
+                                    onClick={() => setSelectedSize(size)}
+                                    className={`font-mono text-xs py-2 border transition-all ${
+                                      selectedSize === size
+                                        ? 'bg-brand-accent border-brand-accent text-black font-extrabold'
+                                        : 'border-white/10 hover:border-white/40 text-white'
+                                    }`}
+                                  >
+                                    {size}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
 
-        <div className="flex space-x-2 mt-4">
-          <button
-            onClick={() => {
-              setActiveSizeSelector(null);
-              setSelectedSize(null);
-            }}
-            className="flex-1 py-2 font-mono text-[10px] text-gray-400 uppercase tracking-widest hover:text-white transition-colors"
-          >
-            Voltar
-          </button>
-          <button
-            disabled={!selectedSize}
-            onClick={() => selectedSize && handleAddWithConfirm(sneaker, selectedSize)}
-            className="flex-1 py-2 bg-white text-black hover:bg-brand-accent hover:text-black font-mono text-[10px] font-bold uppercase tracking-widest transition-colors disabled:opacity-40"
-          >
-            Confirmar
-          </button>
-        </div>
-      </div>
-    )}
-  </div>
-
-                      {/* Brand & info details */}
-                      <span className="text-[10px] text-gray-400 font-mono font-bold uppercase tracking-wider">
-                        {sneaker.brand}
-                      </span>
-                      <h3 className="font-display text-sm font-extrabold text-black uppercase tracking-tight group-hover:text-neutral-700 transition-colors mt-0.5 line-clamp-1">
-                        {sneaker.name}
-                      </h3>
-                      <p className="text-[11px] text-gray-400 font-sans mt-0.5">
-                        {sneaker.colors}
-                      </p>
-                      
-                      <div className="mt-1 flex items-center space-x-1.5 font-mono text-[10px] text-gray-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                        <span>Encomende Já o Seu </span>
+                            <div className="flex space-x-2 mt-4">
+                              <button
+                                onClick={() => {
+                                  setActiveSizeSelector(null);
+                                  setSelectedSize(null);
+                                }}
+                                className="flex-1 py-2 font-mono text-[10px] text-gray-400 uppercase tracking-widest hover:text-white transition-colors"
+                              >
+                                Voltar
+                              </button>
+                              <button
+                                disabled={!selectedSize}
+                                onClick={() => selectedSize && handleAddWithConfirm(sneaker, selectedSize)}
+                                className="flex-1 py-2 bg-white text-black hover:bg-brand-accent hover:text-black font-mono text-[10px] font-bold uppercase tracking-widest transition-colors disabled:opacity-40"
+                              >
+                                Confirmar
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                    </div>
 
-                    {/* Settle Action / Quote request */}
-                    <div className="mt-4 pt-3 border-t border-gray-50 flex items-center justify-end">
-                      <button
-                        onClick={() => {
-                          setSelectedSize(null);
-                          setActiveSizeSelector(sneaker.id);
-                        }}
-                        className="w-full rounded-lg bg-black text-white text-[10px] font-bold font-mono uppercase tracking-wider py-2.5 hover:bg-neutral-800 transition-colors text-center"
-                      >
-                        Pedir Orçamento
-                      </button>
-                    </div>
+                      {/* Informações do Produto (Marca, Nome e Preço) */}
+                      <div className="px-1 pb-1">
+                        <p className="font-mono text-[9px] uppercase text-gray-400 tracking-wider mb-0.5">
+                          {sneaker.brand || "Premium"}
+                        </p>
+                        <h4 className="font-sans text-sm font-bold text-black tracking-tight leading-tight uppercase line-clamp-1 mb-2">
+                          {sneaker.name}
+                        </h4>
+                        
+                        {/* Bloco do Preço */}
+                        <div className="flex items-center justify-between pt-0.5">
+                          <span className="font-mono text-sm font-black text-black">
+                            R$ {sneaker.price?.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) || "Consulte"}
+                          </span>
+                          
+                          {/* Se for o ID 6 OU o ID 3 (seja string ou número) */}
+                          {[3, '3', 6, '6'].includes(sneaker.id) ? (
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
+                              Sob Encomenda
+                            </span>
+                          ) : (
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                              Disponivel
+                            </span>
+                          )}
+                            </div>
+                          </div>
+                        </div>
+
+                    {/* Botão de Selecionar Tamanho */}
+                    <button
+                      onClick={() => setActiveSizeSelector(sneaker.id)}
+                      className="w-full mt-3 py-3 bg-black hover:bg-neutral-800 text-white font-mono text-[10px] font-bold uppercase tracking-widest transition-colors rounded-xl"
+                    >
+                      Selecione o Tamanho
+                    </button>
                   </div>
                 );
               })}
-            </div>
-          )}
-
-          {/* Pagination visual elements */}
-          {filteredSneakers.length > 0 && (
-            <div className="flex items-center justify-center space-x-2 pt-10 pb-6">
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl border border-gray-200 text-black hover:bg-gray-50 transition-colors text-xs font-mono font-semibold" disabled>
-                &lt;
-              </button>
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl bg-black text-white font-mono font-bold text-xs">
-                1
-              </button>
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-400 hover:text-black hover:bg-gray-50 transition-colors text-xs font-mono font-semibold">
-                2
-              </button>
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-400 hover:text-black hover:bg-gray-50 transition-colors text-xs font-mono font-semibold">
-                3
-              </button>
-              <button className="h-10 w-10 flex items-center justify-center rounded-xl border border-gray-200 text-black hover:bg-gray-50 transition-colors text-xs font-mono font-semibold">
-                &gt;
-              </button>
             </div>
           )}
 
@@ -573,10 +556,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                   })}
                 </div>
               </div>
-
-              {/* Price slider */}
-              </div>
-            
+            </div>
 
             {/* Mobile filters bottom action */}
             <div className="border-t border-gray-100 pt-4 mt-6 space-y-2">

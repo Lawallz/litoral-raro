@@ -20,7 +20,12 @@ export default function BagDrawer({
   onClearBag,
 }: BagDrawerProps) {
 
-  // Dispara a mensagem formatada apenas com as informações do produto, sem preços
+  // Calcula o valor total acumulado na sacola
+  const totalBagPrice = items.reduce((acc, item) => {
+    return acc + (item.sneaker.price * item.quantity);
+  }, 0);
+
+  // Dispara a mensagem formatada incluindo os preços individuais e o total estimado
   const handleWhatsAppCheckout = () => {
     if (items.length === 0) return;
 
@@ -28,12 +33,15 @@ export default function BagDrawer({
     text += `Olá, gostaria de consultar a disponibilidade e cotação atualizada para os seguintes modelos:\n\n`;
 
     items.forEach((item, index) => {
+      const itemSubtotal = item.sneaker.price * item.quantity;
       text += `${index + 1}. *${item.sneaker.name}*\n`;
       text += `   • Marca: ${item.sneaker.brand}\n`;
       text += `   • Tamanho BR: ${item.selectedSize}\n`;
-      text += `   • Quantidade: ${item.quantity}x\n\n`;
+      text += `   • Preço Un.: R$ ${item.sneaker.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
+      text += `   • Quantidade: ${item.quantity}x (Subtotal: R$ ${itemSubtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})\n\n`;
     });
 
+    text += `*Valor Total Estimado:* R$ ${totalBagPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
     text += `*Solicitante:* ${navigator.userAgent.includes('Mobile') ? 'Dispositivo Móvel' : 'Web Client'}\n\n`;
     text += `Por favor, me confirme a disponibilidade e o prazo de entrega por encomenda. Obrigado!`;
 
@@ -114,20 +122,20 @@ export default function BagDrawer({
                         <img
                           src={item.sneaker.image}
                           alt={item.sneaker.name}
-                          className="h-20 w-20 rounded-xl object-cover bg-gray-50"
+                          className="h-20 w-20 rounded-xl object-cover bg-gray-50 shrink-0"
                           referrerPolicy="no-referrer"
                         />
                         
                         {/* Sneaker Info */}
                         <div className="ml-4 flex-1 flex flex-col justify-between">
                           <div>
-                            <div className="flex justify-between items-start">
-                              <h4 className="font-display text-sm font-bold text-black leading-snug">
+                            <div className="flex justify-between items-start gap-2">
+                              <h4 className="font-display text-sm font-bold text-black leading-snug uppercase line-clamp-2">
                                 {item.sneaker.name}
                               </h4>
                               <button
                                 onClick={() => onRemoveItem(item.sneaker.id, item.selectedSize)}
-                                className="text-gray-400 hover:text-red-500 p-1 transition-colors"
+                                className="text-gray-400 hover:text-red-500 p-1 transition-colors shrink-0"
                                 aria-label="Remover item"
                               >
                                 <Trash2 className="h-4 w-4" />
@@ -138,9 +146,9 @@ export default function BagDrawer({
                             </p>
                           </div>
 
-                          <div className="flex justify-between items-end mt-2">
+                          <div className="flex justify-between items-center mt-3">
                             {/* Quantity Selector */}
-                            <div className="flex items-center border border-gray-100 rounded-lg">
+                            <div className="flex items-center border border-gray-100 rounded-lg bg-white">
                               <button
                                 onClick={() => onUpdateQuantity(item.sneaker.id, item.selectedSize, item.quantity - 1)}
                                 className="px-2.5 py-1 text-gray-400 hover:text-black font-semibold text-xs transition-colors"
@@ -158,6 +166,18 @@ export default function BagDrawer({
                                 +
                               </button>
                             </div>
+
+                            {/* Item Price Component */}
+                            <div className="text-right">
+                              <p className="font-mono text-sm font-black text-black">
+                                R$ {(item.sneaker.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                              </p>
+                              {item.quantity > 1 && (
+                                <p className="font-mono text-[9px] text-gray-400 uppercase">
+                                  R$ {item.sneaker.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} cada
+                                </p>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -167,13 +187,26 @@ export default function BagDrawer({
               )}
             </div>
 
-            {/* Footer with CTA */}
+            {/* Footer with Price Details & CTA */}
             {items.length > 0 && (
-              <div className="border-t border-gray-100 p-6 bg-gray-50/50">
-                <div className="rounded-xl bg-brand-accent/20 border border-brand-accent/30 p-3 mb-4 flex items-start space-x-2.5">
+              <div className="border-t border-gray-100 p-6 bg-gray-50/50 space-y-4">
+                
+                {/* Price Summary Breakdown */}
+                <div className="space-y-1.5 border-b border-gray-100 pb-4">
+                  <div className="flex justify-between items-center text-xs text-gray-500 font-mono uppercase tracking-wider">
+                    <span>Subtotal dos itens</span>
+                    <span>R$ {totalBagPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-bold text-black uppercase">
+                    <span className="font-display">Total Estimado</span>
+                    <span className="font-mono text-base font-black">R$ {totalBagPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-brand-accent/20 border border-brand-accent/30 p-3 flex items-start space-x-2.5">
                   <Sparkles className="h-4 w-4 text-black shrink-0 mt-0.5" />
                   <p className="text-xs text-gray-600 leading-normal">
-                    Como trabalhamos sob encomenda, os valores e a disponibilidade serão informados diretamente pelo nosso atendimento no WhatsApp.
+                    Como trabalhamos sob encomenda, os valores finais e a disponibilidade de estoque oficial serão confirmados em tempo real pelo nosso atendimento.
                   </p>
                 </div>
 
@@ -182,10 +215,10 @@ export default function BagDrawer({
                   className="w-full flex items-center justify-center space-x-2 rounded-xl bg-black py-4 text-xs font-bold font-mono uppercase tracking-widest text-white shadow-md hover:bg-neutral-800 transition-all transform hover:scale-[1.01]"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>Chamar no WhatsApp</span>
+                  <span>Confirmar e Chamar no WhatsApp</span>
                 </button>
                 
-                <p className="text-[10px] text-center text-gray-400 font-mono mt-3 uppercase tracking-wider">
+                <p className="text-[10px] text-center text-gray-400 font-mono uppercase tracking-wider">
                   Atendimento personalizado e suporte direto com a nossa equipe
                 </p>
               </div>
