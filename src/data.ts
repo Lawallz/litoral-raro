@@ -114,7 +114,7 @@ export const sneakersData: Sneaker[] = [
     name: "Nike Shox TL 'Triple Black'",
     brand: 'Nike',
     silhouette: 'Low Top',
-    price: 249.90,
+    price: 379.90,
     image: '/assets/img/Nike Shox TL Triple Black 1.jpg',
     tag: 'DISPONÍVEL',
     colors: 'Triple Black',
