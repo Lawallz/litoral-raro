@@ -440,7 +440,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                           {/* Se for o ID 6 OU o ID 3 (seja string ou número) */}
                           {[3, '3', 6, '6'].includes(sneaker.id) ? (
                             <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
-                              Sob Encomenda
+                              A pronta entrega
                             </span>
                           ) : (
                             <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">

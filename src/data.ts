@@ -198,13 +198,73 @@ export const sneakersData: Sneaker[] = [
     name: 'Shox TL "White Metallic Silver Pink"',
     brand: 'Nike',
     silhouette: 'Low Top',
-    price: 499.90,
+    price: 479.90,
     image: '/assets/img/Shox TL White Metallic Silver Pink (ou Pink Gradient).png',
     tag: 'DISPONÍVEL',
     colors: 'White/Metallic Silver/Pink',
     sizes: [36, 37, 38, 39, 40, 41, 42],
     description: 'O lendário "Doze Molas" em uma de suas combinações mais limpas e desejadas. Com cabedal em mesh respirável branco, o modelo conta com sobreposições em degradê rosa e prata metalizado sobre o icônico sistema de amortecimento mecânico completo.'
-  }
+  },
+  {
+    id: '18',
+    name: 'Air Max Plus TN "Sunset"',
+    brand: 'Nike',
+    silhouette: 'Low Top',
+    price: 479.90,
+    image: '/assets/img/Air Max Plus TN Sunset.png',
+    tag: 'DISPONÍVEL',
+    colors: 'Orange/Yellow/Black',
+    sizes: [36, 37, 38, 39, 40, 41, 42],
+    description: 'Um dos colorways mais icônicos da história do Air Max Plus. O famoso "Sunset" traz um cabedal em mesh com degradê do amarelo ao laranja inspirado no pôr do sol, detalhes em preto e a clássica estrutura em TPU que marcou gerações. O amortecimento Tuned Air oferece conforto excepcional e um visual inconfundível.'
+},
+{
+    id: '19',
+    name: 'Shox TL "Pure Platinum And Metallic Silver"',
+    brand: 'Nike',
+    silhouette: 'Low Top',
+    price: 479.90,
+    image: '/assets/img/Shox TL Pure Platinum And Metallic Silver.png',
+    tag: 'DISPONÍVEL',
+    colors: 'Pure Platinum/Metallic Silver',
+    sizes: [36, 37, 38, 39, 40, 41, 42],
+    description: 'Com visual totalmente prateado e acabamento premium, o Nike Shox TL "Pure Platinum And Metallic Silver" combina um cabedal em mesh respirável com sobreposições metálicas e o icônico sistema de amortecimento Shox em toda a extensão do solado. Um modelo que une conforto, tecnologia e um estilo futurista marcante.'
+},
+{
+    id: '20',
+    name: 'Shox TL "White Black"',
+    brand: 'Nike',
+    silhouette: 'Low Top',
+    price: 479.90,
+    image: '/assets/img/Shox TL White Black.jpg',
+    tag: 'DISPONÍVEL',
+    colors: 'White/Black/Metallic Silver',
+    sizes: [36, 37, 38, 39, 40, 41, 42],
+    description: 'Uma das combinações mais clássicas do Nike Shox TL. O cabedal em mesh branco recebe sobreposições em prata metálica, Swoosh preto e contraforte preto brilhante, contrastando com o icônico sistema de amortecimento Shox em toda a extensão do solado. Um modelo que une conforto, tecnologia e um visual atemporal.'
+},
+{
+    id: '21',
+    name: 'Air Max Dn8 "Black Bright Crimson"',
+    brand: 'Nike',
+    silhouette: 'Low Top',
+    price: 379.90,
+    image: '/assets/img/Air Max Dn8 Black Bright Crimson.jpg',
+    tag: 'DISPONÍVEL',
+    colors: 'Black/Bright Crimson',
+    sizes: [36, 37, 38, 39, 40, 41, 42],
+    description: 'O Nike Air Max Dn8 "Black Bright Crimson" combina um visual agressivo com a mais recente tecnologia Dynamic Air da Nike. O cabedal totalmente preto recebe detalhes em Bright Crimson que destacam sua silhueta futurista, enquanto o sistema de amortecimento proporciona conforto e estabilidade para o uso diário.'
+},
+{
+    id: '22',
+    name: 'Air Max 95 "Triple White"',
+    brand: 'Nike',
+    silhouette: 'Low Top',
+    price: 379.90,
+    image: '/assets/img/Air Max 95 Triple White.jpg',
+    tag: 'DISPONÍVEL',
+    colors: 'Triple White',
+    sizes: [36, 37, 38, 39, 40, 41, 42],
+    description: 'Um dos clássicos absolutos da linha Air Max, o Air Max 95 "Triple White" aposta em um visual totalmente branco que destaca as icônicas camadas inspiradas na anatomia humana. Equipado com unidades Air visíveis no antepé e calcanhar, oferece conforto, estilo atemporal e versatilidade para qualquer ocasião.'
+}
 ];
 
 // O restante do arquivo (testimonialsData, processStepsData, faqData) permanece idêntico ao anterior.
