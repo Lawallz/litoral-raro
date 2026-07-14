@@ -1,14 +1,28 @@
 import { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal, ArrowUpDown, Filter, X } from 'lucide-react';
-import { Sneaker, Brand, FilterState } from '../types';
+import { Search, SlidersHorizontal, ArrowUpDown, Sparkles, Filter, X } from 'lucide-react';
+import { Sneaker, Brand, Silhouette, FilterState } from '../types';
 import { sneakersData } from '../data';
 
-// Gera a lista de modelos de forma dinâmica a partir das novas propriedades model no data.ts
 const availableModels = Array.from(
   new Set(
-    sneakersData
-      .filter((s) => s.model)
-      .map((s) => JSON.stringify({ name: s.model, brand: s.brand }))
+    sneakersData.map((sneaker) => {
+      let modelName = sneaker.name;
+
+      // Agrupa as variações sob nomes amigáveis para o filtro
+      if (sneaker.name.includes("Air Max 95")) modelName = "Air Max 95";
+      else if (sneaker.name.includes("Air Max Dn8")) modelName = "Air Max Dn8";
+      else if (sneaker.name.includes("Air Max Dn")) modelName = "Air Max Dn";
+      else if (sneaker.name.includes("Air Max Tn") || sneaker.name.includes("Air Max Plus TN")) modelName = "Air Max Tn";
+      else if (sneaker.name.includes("Air Force 1")) modelName = "Air Force 1";
+      else if (sneaker.name.includes("Shox TL")) modelName = "Nike Shox TL";
+      else if (sneaker.name.includes("Shox R4")) modelName = "Nike Shox R4";
+      else if (sneaker.name.includes("Tailwind V")) modelName = "Air Max Tailwind V";
+      else if (sneaker.name.includes("Gel-NYC") || sneaker.name.includes("Gel Nyc")) modelName = "ASICS Gel-NYC";
+      else if (sneaker.name.includes("Nocta")) modelName = "Nike x Nocta";
+      else if (sneaker.name.includes("Mind")) modelName = "Nike Mind";
+
+      return JSON.stringify({ name: modelName, brand: sneaker.brand });
+    })
   )
 ).map((str: string) => JSON.parse(str));
 
@@ -17,11 +31,12 @@ interface CatalogProps {
 }
 
 export default function Catalog({ onAddProductToBag }: CatalogProps) {
-  // Filters State (Silhueta Removida)
-  const [filterState, setFilterState] = useState<Omit<FilterState, 'silhouettes'>>({
+  // Filters State
+  const [filterState, setFilterState] = useState<FilterState>({
     search: '',
     brands: [],
     models: [],
+    silhouettes: [],
     sizes: [],
     maxPrice: 10000,
     sortBy: 'highlights',
@@ -36,18 +51,19 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
 
   // Constants
   const availableBrands: Brand[] = ['Nike', 'Asics'];
-  const availableSizes = [34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44];
+  const availableSilhouettes: Silhouette[] = ['Low Top', 'Mid Top', 'High Top'];
+  const availableSizes = [38, 39, 40, 41, 42, 43, 44];
 
   // Apply filters and sorting dynamically
   const filteredSneakers = useMemo(() => {
     let result = [...sneakersData];
 
-    // 1. Brand filter
+    // 1. Brand filter (Executa primeiro para garantir isolamento total)
     if (filterState.brands.length > 0) {
       result = result.filter((s) => filterState.brands.includes(s.brand));
     }
 
-    // 2. Search query matching
+    // 2. Search query matching (Busca apenas dentro dos resultados da marca filtrada)
     if (filterState.search.trim()) {
       const q = filterState.search.toLowerCase().trim();
       result = result.filter(
@@ -58,9 +74,9 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
       );
     }
 
-    // 3. Model filter (Subcategorias do menu) - NOVO E CORRIGIDO
-    if (filterState.models.length > 0) {
-      result = result.filter((s) => s.model && filterState.models.includes(s.model));
+    // 3. Silhouette filter
+    if (filterState.silhouettes.length > 0) {
+      result = result.filter((s) => filterState.silhouettes.includes(s.silhouette));
     }
 
     // 4. Size filter
@@ -87,24 +103,23 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
   const handleBrandChange = (brand: Brand) => {
     setFilterState((prev) => {
       const alreadySelected = prev.brands.includes(brand);
-      
-      // Se desmarcar a marca, limpamos também os modelos filhos dela que estavam ativos
-      const newBrands = alreadySelected
-        ? prev.brands.filter((b) => b !== brand)
-        : [...prev.brands, brand];
-
-      const activeModelsOfBrand = availableModels
-        .filter((m) => m.brand === brand)
-        .map((m) => m.name);
-
-      const newModels = alreadySelected
-        ? prev.models.filter((m) => !activeModelsOfBrand.includes(m))
-        : prev.models;
-
       return {
         ...prev,
-        brands: newBrands,
-        models: newModels,
+        brands: alreadySelected
+          ? prev.brands.filter((b) => b !== brand)
+          : [...prev.brands, brand],
+      };
+    });
+  };
+
+  const handleSilhouetteChange = (silhouette: Silhouette) => {
+    setFilterState((prev) => {
+      const alreadySelected = prev.silhouettes.includes(silhouette);
+      return {
+        ...prev,
+        silhouettes: alreadySelected
+          ? prev.silhouettes.filter((s) => s !== silhouette)
+          : [...prev.silhouettes, silhouette],
       };
     });
   };
@@ -134,15 +149,15 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
   };
 
   const handleResetFilters = () => {
-    setFilterState({
-      search: '',
-      brands: [],
-      models: [],
-      sizes: [],
-      maxPrice: 10000,
-      sortBy: 'highlights',
-    });
-  };
+      setFilterState({
+        search: '',
+        brands: [],
+        models: [], // <--- Adicionado aqui!
+        sizes: [],
+        maxPrice: 10000,
+        sortBy: 'highlights',
+      });
+    };
 
   const handleAddWithConfirm = (sneaker: Sneaker, size: number) => {
     onAddProductToBag(sneaker, size);
@@ -153,7 +168,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       
-      {/* Page Header */}
+      {/* Page Header (Matching Catalog Mockup) */}
       <div className="text-center max-w-3xl mx-auto mb-12">
         <span className="font-mono text-xs font-bold text-gray-400 uppercase tracking-widest">
           NOSSOS PRODUTOS
@@ -185,13 +200,15 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
             </button>
           </div>
 
-          {/* Brands & Models Filter (Integrado) */}
+          {/* Brands & Models Filter */}
           <div className="space-y-3">
             <h3 className="font-display text-xs font-bold uppercase tracking-widest text-black">
               Marcas & Modelos
             </h3>
             <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1 scrollbar-thin">
               {availableBrands.map((brand) => {
+                // Filtra os modelos específicos que pertencem a essa marca.
+                // Ajuste a lógica de filtragem abaixo conforme os dados do seu data.ts
                 const modelsOfThisBrand = availableModels.filter(
                   (model) => model.brand.toLowerCase() === brand.toLowerCase()
                 );
@@ -211,7 +228,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                       </span>
                     </label>
 
-                    {/* Itens Filhos: Modelos */}
+                    {/* Itens Filhos: Modelos (aparecem com recuo se a marca estiver selecionada) */}
                     {filterState.brands.includes(brand) && modelsOfThisBrand.length > 0 && (
                       <div className="pl-5 space-y-1.5 border-l border-gray-100 ml-2">
                         {modelsOfThisBrand.map((model) => (
@@ -309,7 +326,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
           </div>
 
           {/* Active Filtering Tags */}
-          {(filterState.brands.length > 0 || filterState.models.length > 0 || filterState.sizes.length > 0 || filterState.search) && (
+          {(filterState.brands.length > 0 || filterState.silhouettes.length > 0 || filterState.sizes.length > 0 || filterState.search) && (
             <div className="flex flex-wrap gap-2 items-center">
               <span className="font-mono text-[9px] text-gray-400 uppercase tracking-widest font-bold">Ativos:</span>
               
@@ -327,10 +344,10 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                 </span>
               ))}
 
-              {filterState.models.map((m) => (
-                <span key={m} className="inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-mono text-black">
-                  <span>{m}</span>
-                  <X className="h-3 w-3 cursor-pointer" onClick={() => handleModelChange(m)} />
+              {filterState.silhouettes.map((s) => (
+                <span key={s} className="inline-flex items-center space-x-1 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-mono text-black">
+                  <span>{s}</span>
+                  <X className="h-3 w-3 cursor-pointer" onClick={() => handleSilhouetteChange(s)} />
                 </span>
               ))}
 
@@ -389,7 +406,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                     className="group relative flex flex-col justify-between overflow-hidden bg-white rounded-2xl border border-gray-100 p-3 shadow-sm hover:shadow-luxe hover:border-black/5 transition-all duration-300"
                   >
                     <div>
-                      {/* Image container */}
+                      {/* Image container - QUADRADINHO E RETO */}
                       <div className="relative aspect-[3/4] w-full overflow-hidden bg-black-100 mb-4">
                         {sneaker.tag && (
                           <span className="absolute top-2 left-2 z-10 font-mono text-[9px] font-bold text-white uppercase tracking-widest bg-black border border-black px-2.5 py-1">
@@ -464,18 +481,19 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                             R$ {sneaker.price?.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) || "Consulte"}
                           </span>
                           
+                          {/* Se for o ID 6 OU o ID 3 (seja string ou número) */}
                           {[3, '3', 6, '6'].includes(sneaker.id) ? (
                             <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
                               A pronta entrega
                             </span>
                           ) : (
                             <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                              Disponível
+                              Disponivel
                             </span>
                           )}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
 
                     {/* Botão de Selecionar Tamanho */}
                     <button
@@ -493,7 +511,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
         </main>
       </div>
 
-      {/* Mobile Drawer Filter Panel (Silhueta Removida) */}
+      {/* Mobile Drawer Filter Panel */}
       {showMobileFilters && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowMobileFilters(false)} />
@@ -514,51 +532,47 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
 
             {/* Mobile Filters Content */}
             <div className="space-y-6 flex-1">
-              {/* Brands & Models (Hierárquico também no Mobile) */}
+              {/* Brands */}
               <div className="space-y-3">
                 <h3 className="font-display text-xs font-bold uppercase tracking-widest text-black">
-                  Marcas & Modelos
+                  Marcas
                 </h3>
-                <div className="space-y-3">
-                  {availableBrands.map((brand) => {
-                    const modelsOfThisBrand = availableModels.filter(
-                      (model) => model.brand.toLowerCase() === brand.toLowerCase()
-                    );
+                <div className="space-y-2">
+                  {availableBrands.map((brand) => (
+                    <label key={brand} className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={filterState.brands.includes(brand)}
+                        onChange={() => handleBrandChange(brand)}
+                        className="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
+                      />
+                      <span className="font-mono text-xs font-medium text-gray-500">
+                        {brand}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
 
-                    return (
-                      <div key={brand} className="space-y-1.5">
-                        <label className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={filterState.brands.includes(brand)}
-                            onChange={() => handleBrandChange(brand)}
-                            className="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
-                          />
-                          <span className="font-mono text-xs font-bold text-gray-700">
-                            {brand}
-                          </span>
-                        </label>
-
-                        {filterState.brands.includes(brand) && modelsOfThisBrand.length > 0 && (
-                          <div className="pl-5 space-y-1.5 border-l border-gray-100 ml-2">
-                            {modelsOfThisBrand.map((model) => (
-                              <label key={model.name} className="flex items-center space-x-2.5 cursor-pointer">
-                                <input
-                                  type="checkbox"
-                                  checked={filterState.models.includes(model.name)}
-                                  onChange={() => handleModelChange(model.name)}
-                                  className="h-3.5 w-3.5 rounded border-gray-300 text-black focus:ring-black"
-                                />
-                                <span className="font-mono text-[11px] font-medium text-gray-400">
-                                  {model.name}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+              {/* Silhouette */}
+              <div className="space-y-3 pt-4 border-t border-gray-100">
+                <h3 className="font-display text-xs font-bold uppercase tracking-widest text-black">
+                  Silhueta
+                </h3>
+                <div className="space-y-2">
+                  {availableSilhouettes.map((sil) => (
+                    <label key={sil} className="flex items-center space-x-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={filterState.silhouettes.includes(sil)}
+                        onChange={() => handleSilhouetteChange(sil)}
+                        className="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
+                      />
+                      <span className="font-mono text-xs font-medium text-gray-500">
+                        {sil}
+                      </span>
+                    </label>
+                  ))}
                 </div>
               </div>
 

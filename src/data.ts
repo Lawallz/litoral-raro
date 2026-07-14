@@ -5,6 +5,7 @@ export const sneakersData: Sneaker[] = [
     id: '1',
     name: "Air Max 95 'Neon'",
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max 95 Neon 3.jpg',
@@ -17,6 +18,7 @@ export const sneakersData: Sneaker[] = [
     id: '2',
     name: "Air Max 95 'Solar Red'",
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max 95 Solar Red 1.jpg',
@@ -29,6 +31,7 @@ export const sneakersData: Sneaker[] = [
     id: '3',
     name: "Air Max 95 x Corteiz Black Honey 1",
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max 95 x Corteiz Black Honey 3.jpg',
@@ -41,6 +44,7 @@ export const sneakersData: Sneaker[] = [
     id: '4',
     name: "ASICS Gel-NYC Cream Arctic Sky",
     brand: 'Asics',
+    model: 'ASICS Gel-NYC',
     silhouette: 'Low Top',
     price: 299.99,
     image: '/assets/img/ASICS Gel Nyc - Cream Arctic Sky 1.jpg',
@@ -53,6 +57,7 @@ export const sneakersData: Sneaker[] = [
     id: '5',
     name: "Air Max Dn 'White/Metallic Silver'",
     brand: 'Nike',
+    model: 'Air Max Dn',
     silhouette: 'Low Top',
     price: 379.99,
     image: '/assets/img/Air Max DN Branco WhiteMetallic Silver 1.jpg',
@@ -65,6 +70,7 @@ export const sneakersData: Sneaker[] = [
     id: '6',
     name: "Air Max 95 x Corteiz 'Black'",
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max 95 x Corteiz Black 1.jpg',
@@ -77,6 +83,7 @@ export const sneakersData: Sneaker[] = [
     id: '7',
     name: "Air Max Tn 'Triple White'",
     brand: 'Nike',
+    model: 'Air Max Tn',
     silhouette: 'Low Top',
     price: 329.90,
     image: '/assets/img/Air Max Tn Triple White 2.jpg',
@@ -89,6 +96,7 @@ export const sneakersData: Sneaker[] = [
     id: '8',
     name: "ASICS Gel Nyc 'Oyster Grey 1'",
     brand: 'Asics',
+    model: 'ASICS Gel-NYC',
     silhouette: 'Low Top',
     price: 299.90,
     image: '/assets/img/ASICS Gel Nyc - Oyster Grey 1.jpg',
@@ -101,6 +109,7 @@ export const sneakersData: Sneaker[] = [
     id: '9',
     name: "Air Force 1 'White'",
     brand: 'Nike',
+    model: 'Air Force 1',
     silhouette: 'Low Top',
     price: 199.99,
     image: '/assets/img/Air Force 1 2.jpg',
@@ -113,6 +122,7 @@ export const sneakersData: Sneaker[] = [
     id: '10',
     name: "Nike Shox TL 'Triple Black'",
     brand: 'Nike',
+    model: 'Nike Shox TL',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Shox TL Triple Black 1.jpg',
@@ -125,6 +135,7 @@ export const sneakersData: Sneaker[] = [
     id: '11',
     name: "Asics Gel-NYC Graphite Grey Black",
     brand: 'Asics',
+    model: 'ASICS Gel-NYC',
     silhouette: 'Low Top',
     price: 299.90,
     image: '/assets/img/Asics Gel-NYC Graphite Grey Black 2.jpg',
@@ -137,6 +148,7 @@ export const sneakersData: Sneaker[] = [
     id: '12',
     name: "Shox TL / R4 'Triple White'",
     brand: 'Nike',
+    model: 'Nike Shox R4',
     silhouette: 'Low Top',
     price: 249.90,
     image: '/assets/img/Nike Shox R4 Triple White 2.jpg',
@@ -149,6 +161,7 @@ export const sneakersData: Sneaker[] = [
     id: '13',
     name: "Air Max Dn Black 'Black Dark Smoke Grey'",
     brand: 'Nike',
+    model: 'Air Max Dn',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max Dn Black 1.jpg',
@@ -161,6 +174,7 @@ export const sneakersData: Sneaker[] = [
     id: '14',
     name: 'Air Force 1 Low x Cactus Plant Flea Market (CPFM) "Black White"',
     brand: 'Nike',
+    model: 'Air Force 1',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Air Force 1 Low x Cactus Plant Flea Market (CPFM) Black White.png',
@@ -173,6 +187,7 @@ export const sneakersData: Sneaker[] = [
     id: '15',
     name: 'Air Max Tailwind V x Skepta "Bloody Chrome"',
     brand: 'Nike',
+    model: 'Air Max Tailwind V',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Air Max Tailwind V x Skepta Bloody Chrome (Red).png',
@@ -185,42 +200,46 @@ export const sneakersData: Sneaker[] = [
     id: '16',
     name: 'Air Max Tailwind V x Skepta "Bright Blue"',
     brand: 'Nike',
+    model: 'Air Max Tailwind V',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Air Max Tailwind V x Skepta Bright Blue.png',
     tag: 'DISPONÍVEL',
     colors: 'Black/Chrome/Bright Blue',
-    sizes: [ 38, 39, 40, 41, 42, 43],
+    sizes: [38, 39, 40, 41, 42, 43],
     description: 'Segunda colorway da aclamada collab com Skepta, este par traz o padrão de asa de borboleta em um azul elétrico vibrante. Os detalhes em TPU preto estruturado e as placas cromadas na lateral completam essa relíquia da linha Air Max.'
   },
   {
     id: '17',
     name: 'Shox TL "White Metallic Silver Pink"',
     brand: 'Nike',
+    model: 'Nike Shox TL',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Shox TL White Metallic Silver Pink (ou Pink Gradient).png',
     tag: 'DISPONÍVEL',
     colors: 'White/Metallic Silver/Pink',
-    sizes: [ 34,35,36,37,38, 39],
-    description: 'O lendário "Doze Molas" em uma de suas combinações mais limpas e desejadas. Com cabedal em mesh respirável branco, o modelo conta com sobreposições em degradê rosa e prata metalizado sobre o icônico sistema de amortecimento mecânico completo.'
+    sizes: [34, 35, 36, 37, 38, 39],
+    description: 'O lendário "Doze Molas" em uma de suas combinações mais limpas e desejadas. Com cabedal inmesh respirável branco, o modelo conta com sobreposições em degradê rosa e prata metalizado sobre o icônico sistema de amortecimento mecânico completo.'
   },
   {
     id: '18',
     name: 'Air Max Plus TN "Sunset"',
     brand: 'Nike',
+    model: 'Air Max Tn',
     silhouette: 'Low Top',
     price: 329.90,
     image: '/assets/img/Air Max Plus TN Sunset.png',
     tag: 'DISPONÍVEL',
     colors: 'Orange/Yellow/Black',
-    sizes: [ 38, 39, 40, 41, 42, 43],
+    sizes: [38, 39, 40, 41, 42, 43],
     description: 'Um dos colorways mais icônicos da história do Air Max Plus. O famoso "Sunset" traz um cabedal em mesh com degradê do amarelo ao laranja inspirado no pôr do sol, detalhes em preto e a clássica estrutura em TPU que marcou gerações. O amortecimento Tuned Air oferece conforto excepcional e um visual inconfundível.'
-},
-{
+  },
+  {
     id: '19',
     name: 'Shox TL "Pure Platinum And Metallic Silver"',
     brand: 'Nike',
+    model: 'Nike Shox TL',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Shox TL Pure Platinum And Metallic Silver.png',
@@ -228,11 +247,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Pure Platinum/Metallic Silver',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Com visual totalmente prateado e acabamento premium, o Nike Shox TL "Pure Platinum And Metallic Silver" combina um cabedal em mesh respirável com sobreposições metálicas e o icônico sistema de amortecimento Shox em toda a extensão do solado. Um modelo que une conforto, tecnologia e um estilo futurista marcante.'
-},
-{
+  },
+  {
     id: '20',
     name: 'Shox TL "White Black"',
     brand: 'Nike',
+    model: 'Nike Shox TL',
     silhouette: 'Low Top',
     price: 479.90,
     image: '/assets/img/Shox TL White Black.jpg',
@@ -240,11 +260,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'White/Black/Metallic Silver',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Uma das combinações mais clássicas do Nike Shox TL. O cabedal em mesh branco recebe sobreposições em prata metálica, Swoosh preto e contraforte preto brilhante, contrastando com o icônico sistema de amortecimento Shox em toda a extensão do solado. Um modelo que une conforto, tecnologia e um visual atemporal.'
-},
-{
+  },
+  {
     id: '21',
     name: 'Air Max Dn8 "Black Bright Crimson"',
     brand: 'Nike',
+    model: 'Air Max Dn8',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max Dn8 Black Bright Crimson.jpg',
@@ -252,11 +273,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Black/Bright Crimson',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'O Nike Air Max Dn8 "Black Bright Crimson" combina um visual agressivo com a mais recente tecnologia Dynamic Air da Nike. O cabedal totalmente preto recebe detalhes em Bright Crimson que destacam sua silhueta futurista, enquanto o sistema de amortecimento proporciona conforto e estabilidade para o uso diário.'
-},
-{
+  },
+  {
     id: '22',
     name: 'Air Max 95 "Triple White"',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Air Max 95 Triple White.jpg',
@@ -264,11 +286,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Triple White',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Um dos clássicos absolutos da linha Air Max, o Air Max 95 "Triple White" aposta em um visual totalmente branco que destaca as icônicas camadas inspiradas na anatomia humana. Equipado com unidades Air visíveis no antepé e calcanhar, oferece conforto, estilo atemporal e versatilidade para qualquer ocasião.'
-},
-{
+  },
+  {
     id: '23',
     name: 'Nike Mind "001"',
     brand: 'Nike',
+    model: 'Nike Mind',
     silhouette: 'Low Top',
     price: 249.90,
     image: '/assets/img/Nike Mind 001.png',
@@ -276,11 +299,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'White/Orange',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Desenvolvido com foco no bem-estar e recuperação, o Nike Mind "001" apresenta um design estilo mule/clog com um sistema inovador de nós articulados na sola que massageiam a planta dos pés, proporcionando estímulo sensorial e conforto máximo pós-treino.'
-},
-{
+  },
+  {
     id: '24',
     name: 'Nike Shox R4 "Brasil"',
     brand: 'Nike',
+    model: 'Nike Shox R4',
     silhouette: 'Low Top',
     price: 299.90,
     image: '/assets/img/Nike Shox R4 Brasil.png',
@@ -288,11 +312,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'White/Comet Blue-Chrome-Green',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Um ícone da cultura urbana brasileira, o Nike Shox R4 "Brasil" traz de volta o clássico cabedal com detalhes metalizados e as famosas quatro colunas de amortecimento Shox, destacando-se pelas cores inspiradas na bandeira nacional.'
-},
-{
+  },
+  {
     id: '25',
     name: 'Central Cee x Nike Air Max 95 "Syna World"',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Central Cee x Nike Air Max 95 Syna World.png',
@@ -300,11 +325,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Black/Rose Gold',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Uma colaboração exclusiva com o rapper britânico Central Cee e sua marca Syna World. Este Air Max 95 combina tons escuros premium com detalhes contrastantes e acabamento personalizado que reflete a estética do Tech Fleece e da cultura de rua de Londres.'
-},
-{
+  },
+  {
     id: '26',
     name: 'Nike Air Max Tn "Triple Black"',
     brand: 'Nike',
+    model: 'Air Max Tn',
     silhouette: 'Low Top',
     price: 329.90,
     image: '/assets/img/Nike Air Max Tn Triple Black.png',
@@ -312,11 +338,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Triple Black',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Também conhecido como Air Max Plus, a versão "Triple Black" traz a agressividade das veias de TPU sobrepostas em um cabedal inteiramente preto. Equipado com a tecnologia Tuned Air, oferece estabilidade e um visual marcante para o dia a dia.'
-},
-{
+  },
+  {
     id: '27',
     name: 'Nike Air Max 95 "Triple Black"',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Air Max 95 Triple Black.png',
@@ -324,23 +351,25 @@ export const sneakersData: Sneaker[] = [
     colors: 'Triple Black',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'O clássico design inspirado na anatomia humana em uma versão completamente preta stealth. Combinando mesh, couro e camurça sintética, o Air Max 95 "Triple Black" une durabilidade com o conforto inconfundível de suas cápsulas de ar visíveis.'
-},
-{
+  },
+  {
     id: '28',
     name: 'Corteiz x Nike Air Max 95 SP "Rules the World"',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Corteiz x Nike Air Max 95 SP Rules the World.png',
     tag: 'DISPONÍVEL',
     colors: 'Olive/Black-Camo',
     sizes: [38, 39, 40, 41, 42, 43],
-    description: 'Nascido da colaboração com a marca londrina Corteiz, este modelo traz um visual utilitário e militar com cabedal em tons de verde oliva, forro interno com estampa camuflada e o logotipo da Alcatraz bordado, consolidando a mensagem "Rules the World".'
-},
-{
+    description: 'Nascido da colaboração com a marca londrina Corteiz, este modelo traz um visual utilitário e militar com cabedal in tons de verde oliva, forro interno com estampa camuflada e o logotipo da Alcatraz bordado, consolidando a mensagem "Rules the World".'
+  },
+  {
     id: '29',
     name: 'Nike Air Max Dn "All Night"',
     brand: 'Nike',
+    model: 'Air Max Dn',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Air Max Dn All Night.png',
@@ -348,11 +377,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'Black/Dark Smoke Grey/Light Crimson',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Apresentando a nova geração de amortecimento da Nike, o Air Max Dn "All Night" conta com o sistema Dynamic Air de tubos de pressão dupla. O design futurista oferece uma transição suave a cada passo e um visual moderno e disruptivo.'
-},
-{
+  },
+  {
     id: '30',
     name: 'Nike x Nocta "Glide White"',
     brand: 'Nike',
+    model: 'Nike x Nocta',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike x Nocta Glide White.png',
@@ -360,11 +390,12 @@ export const sneakersData: Sneaker[] = [
     colors: 'White/Chrome',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Criado em parceria com a sub-linha NOCTA do Drake, o Nike Glide é inspirado no clássico Zoom Flight 95. A versão "White" traz um cabedal todo branco texturizado com detalhes cromados na entressola que remetem a "olhos de mosca", unindo o retrô do basquete ao estilo urbano.'
-},
-{
+  },
+  {
     id: '31',
     name: 'Nike Air Max Tn "Hyper Blue"',
     brand: 'Nike',
+    model: 'Air Max Tn',
     silhouette: 'Low Top',
     price: 329.90,
     image: '/assets/img/Nike Air Max Tn Hyper Blue.png',
@@ -372,43 +403,46 @@ export const sneakersData: Sneaker[] = [
     colors: 'Hyper Blue/Black-Chamois',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Uma das colorways OG mais famosas do Air Max Plus (Tn). O cabedal em mesh apresenta um degradê marcante que vai do azul claro ao escuro, contrastado pelas veias pretas de TPU e o icônico mini Swoosh amarelo (Chamois), finalizado com o amortecimento Tuned Air.'
-},
-{
+  },
+  {
     id: '32',
     name: 'Nike Air Max 95 SE Big Bubble 211 Silver Black',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Air Max 95 SE Big Bubble 211 Silver Black.png',
     tag: 'DISPONÍVEL',
     colors: 'Metallic Silver/Black',
-    sizes: [ 38, 39, 40, 41, 42,43],
+    sizes: [38, 39, 40, 41, 42, 43],
     description: 'Com design inspirado no futebol dos anos 2000, esta versão traz um cabedal totalmente prateado metálico reflexivo sobre uma entressola preta. Conta com o sistema Big Bubble de cápsulas de ar aumentadas e o marcante detalhe ✔️AMOS na lateral.'
-},
-{
+  },
+  {
     id: '33',
     name: 'Nike Air Max 95 Gunsmoke Pink Foam',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Air Max 95 Gunsmoke Pink Foam.png',
     tag: 'DISPONÍVEL',
     colors: 'Gunsmoke/Grey/Pink Foam',
-    sizes: [36, 37, 38, 39, 40, 41, 42,43],
+    sizes: [36, 37, 38, 39, 40, 41, 42, 43],
     description: 'Apresentando as clássicas camadas em degradê de tons cinzas "Gunsmoke", este modelo ganha destaque com detalhes contrastantes em rosa pastel nos passadores e logos, combinando a robustez do Air Max 95 clássico com um toque sutil de cor.'
-},
-{
+  },
+  {
     id: '34',
     name: 'Nike Air Max 95 SE Big Bubble Total 90 Black',
     brand: 'Nike',
+    model: 'Air Max 95',
     silhouette: 'Low Top',
     price: 379.90,
     image: '/assets/img/Nike Air Max 95 SE Big Bubble Total 90 Black⁠.png',
     tag: 'DISPONÍVEL',
     colors: 'Black/Anthracite/Gold',
-    sizes: [ 38, 39, 40, 41, 42,43],
+    sizes: [38, 39, 40, 41, 42, 43],
     description: 'Unindo a cultura de corrida com a herança dos gramados, a versão "Total 90 Black" aposta em um visual inteiramente preto "stealth" com texturas em mesh e couro premium, finalizado com as bolsas de ar ampliadas e a inscrição ✔️AMOS em branco na entressola.'
-}
+  }
 ];
 
 // O restante do arquivo (testimonialsData, processStepsData, faqData) permanece idêntico ao anterior.
@@ -493,4 +527,20 @@ export const faqData: FAQItem[] = [
     question: 'Eu recebo código de rastreamento do meu pedido?',
     answer: 'Com certeza. Assim que o seu sneaker for postado nos Correios, você receberá automaticamente o código de rastreio por e-mail ou WhatsApp para acompanhar cada passo da entrega até a sua casa.'
   }
+];
+export const availableModels = [
+  // --- NIKE MODELS ---
+  { name: "Air Force 1", brand: "Nike" },
+  { name: "Air Max 95", brand: "Nike" },
+  { name: "Air Max Dn", brand: "Nike" },
+  { name: "Air Max Dn8", brand: "Nike" },
+  { name: "Air Max Tn", brand: "Nike" },
+  { name: "Air Max Tailwind V", brand: "Nike" },
+  { name: "Nike Shox TL", brand: "Nike" },
+  { name: "Nike Shox R4", brand: "Nike" },
+  { name: "Nike Mind", brand: "Nike" },
+  { name: "Nike x Nocta", brand: "Nike" },
+
+  // --- ASICS MODELS ---
+  { name: "ASICS Gel-NYC", brand: "Asics" }
 ];
