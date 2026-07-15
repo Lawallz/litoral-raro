@@ -442,6 +442,45 @@ export const sneakersData: Sneaker[] = [
     colors: 'Black/Anthracite/Gold',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Unindo a cultura de corrida com a herança dos gramados, a versão "Total 90 Black" aposta em um visual inteiramente preto "stealth" com texturas em mesh e couro premium, finalizado com as bolsas de ar ampliadas e a inscrição ✔️AMOS em branco na entressola.'
+  },
+  {
+    id: '35',
+    name: "Nike Air Max Plus Tn 'Metallic Silver'",
+    brand: 'Nike',
+    model: 'Air Max Tn',
+    silhouette: 'Low Top',
+    price: 329.90,
+    image: '/assets/img/Nike Air Max Plus Tn \'Metallic Silver\'.png',
+    tag: 'DISPONÍVEL',
+    colors: 'Metallic Silver/White/Black',
+    sizes: [38, 39, 40, 41, 42, 43],
+    description: 'Apresentando uma estética futurista industrial, o Air Max Plus "Metallic Silver" destaca-se pelo seu cabedal em mesh prata metálico com as clássicas nervuras de TPU brilhantes. Equipado com amortecimento Tuned Air, une conforto urbano e um design robótico polido de alto impacto.'
+  },
+  {
+    id: '36',
+    name: "Nike Air Max Plus Tn 'Dragon'",
+    brand: 'Nike',
+    model: 'Air Max Tn',
+    silhouette: 'Low Top',
+    price: 329.90,
+    image: '/assets/img/Nike Air Max Plus Tn \'Dragon\'.png',
+    tag: 'DISPONÍVEL',
+    colors: 'Red/Black/Yellow',
+    sizes: [38, 39, 40, 41, 42, 43],
+    description: 'Com um visual agressivo inspirado no fogo e na mística oriental, a colorway "Dragon" traz um degradê quente e impactante no cabedal. As linhas pretas de TPU reforçam a estrutura do tênis, enquanto o amortecimento Tuned Air garante a pisada firme e o conforto lendário deste ícone das ruas.'
+  },
+  {
+    id: '37',
+    name: "Nike Air Max Plus Tn 'Reverse Venom'",
+    brand: 'Nike',
+    model: 'Air Max Tn',
+    silhouette: 'Low Top',
+    price: 329.90,
+    image: '/assets/img/Nike Air Max Plus Tn \'Reverse Venom\'.png',
+    tag: 'DISPONÍVEL',
+    colors: 'Black/White/Red',
+    sizes: [38, 39, 40, 41, 42, 43],
+    description: 'Invertendo uma das combinações mais agressivas da linha, o "Reverse Venom" traz um cabedal com base escura contrastado por veias de TPU brancas e detalhes em vermelho vibrante nos logos e na bolha de ar. Uma estética intimidadora que evoca a pele do simbionte, aliada ao clássico suporte Tuned Air.'
   }
 ];
 
