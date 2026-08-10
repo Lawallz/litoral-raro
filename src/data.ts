@@ -481,7 +481,6 @@ export const sneakersData: Sneaker[] = [
     colors: 'Black/White/Red',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Invertendo uma das combinações mais agressivas da linha, o "Reverse Venom" traz um cabedal com base escura contrastado por veias de TPU brancas e detalhes em vermelho vibrante nos logos e na bolha de ar. Uma estética intimidadora que evoca a pele do simbionte, aliada ao clássico suporte Tuned Air.'
-<<<<<<< HEAD
   },
   {
     id: '38',
@@ -534,12 +533,9 @@ export const sneakersData: Sneaker[] = [
     colors: 'Grey/Silver',
     sizes: [38, 39, 40, 41, 42, 43],
     description: 'Inspirado na anatomia humana e nas camadas geológicas, o clássico Air Max 95 ganha a sofisticação da edição "Grey Jewel". Com sobreposições em tons de cinza degradê e o sutil detalhe do Swoosh em formato de joia, é uma verdadeira obra-prima do streetwear.'
-=======
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   }
 ];
 
-// O restante do arquivo (testimonialsData, processStepsData, faqData) permanece idêntico ao anterior.
 export const testimonialsData: Testimonial[] = [
   {
     id: '1',
@@ -622,6 +618,7 @@ export const faqData: FAQItem[] = [
     answer: 'Com certeza. Assim que o seu sneaker for postado nos Correios, você receberá automaticamente o código de rastreio por e-mail ou WhatsApp para acompanhar cada passo da entrega até a sua casa.'
   }
 ];
+
 export const availableModels = [
   // --- NIKE MODELS ---
   { name: "Air Force 1", brand: "Nike" },

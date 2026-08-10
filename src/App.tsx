@@ -9,22 +9,15 @@ import BagDrawer from './components/BagDrawer';
 import { Sneaker, BagItem } from './types';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, X, Phone } from 'lucide-react';
-<<<<<<< HEAD
 import { AdminPage } from './pages/Admin';
 
 export default function App() {
+  // Navigation active screen
   const [activeTab, setActiveTab] = useState<string>(() => {
     return window.location.pathname === '/admin' ? 'admin' : 'inicio';
   });
   
-=======
-
-export default function App() {
-  // Navigation active screen
-  const [activeTab, setActiveTab] = useState<string>('inicio');
-  
   // Shopping bag quotes state (using localStorage for robust client persistence)
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const [bagItems, setBagItems] = useState<BagItem[]>(() => {
     const saved = localStorage.getItem('litoral_raro_bag');
     if (saved) {
@@ -39,32 +32,21 @@ export default function App() {
 
   const [isBagOpen, setIsBagOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-<<<<<<< HEAD
-  const [toastMessage, setToastMessage] = useState<{ name: string; size: number } | null>(null);
-
-=======
 
   // Success Notification Toast when added
   const [toastMessage, setToastMessage] = useState<{ name: string; size: number } | null>(null);
 
   // Sync state to local storage
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   useEffect(() => {
     localStorage.setItem('litoral_raro_bag', JSON.stringify(bagItems));
   }, [bagItems]);
 
-<<<<<<< HEAD
-=======
   // Smooth scroll to top on screen transitions
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 
-<<<<<<< HEAD
-=======
   // Add Item handler
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const handleAddProductToBag = (sneaker: Sneaker, size: number) => {
     setBagItems((prev) => {
       const existingIdx = prev.findIndex(
@@ -80,26 +62,17 @@ export default function App() {
       }
     });
 
-<<<<<<< HEAD
-=======
     // Show toast notice
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
     setToastMessage({ name: sneaker.name, size });
     setTimeout(() => {
       setToastMessage(null);
     }, 4000);
 
-<<<<<<< HEAD
-    setIsBagOpen(true);
-  };
-
-=======
     // Open bag drawer for great visual feedback
     setIsBagOpen(true);
   };
 
   // Update quantity handler
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const handleUpdateQuantity = (id: string, size: number, quantity: number) => {
     if (quantity < 1) return;
     setBagItems((prev) =>
@@ -111,27 +84,21 @@ export default function App() {
     );
   };
 
-<<<<<<< HEAD
-=======
   // Remove individual item handler
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const handleRemoveItem = (id: string, size: number) => {
     setBagItems((prev) =>
       prev.filter((item) => !(item.sneaker.id === id && item.selectedSize === size))
     );
   };
 
-<<<<<<< HEAD
-=======
   // Clear all bag quotes
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const handleClearBag = () => {
     setBagItems([]);
   };
 
   const totalCount = bagItems.reduce((sum, item) => sum + item.quantity, 0);
 
-<<<<<<< HEAD
+  // Se estiver na rota admin, renderiza a página de administração diretamente
   if (activeTab === 'admin' || window.location.pathname === '/admin') {
     return <AdminPage />;
   }
@@ -139,12 +106,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-surface text-brand-ink flex flex-col justify-between selection:bg-brand-accent selection:text-black">
       
-=======
-  return (
-    <div className="min-h-screen bg-brand-surface text-brand-ink flex flex-col justify-between selection:bg-brand-accent selection:text-black">
-      
       {/* 1. GLASSMORPHIC FLOATING HEADER */}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -154,10 +116,7 @@ export default function App() {
         setMobileMenuOpen={setMobileMenuOpen}
       />
 
-<<<<<<< HEAD
-=======
       {/* 2. MAIN ACTIVE SECTION WINDOW (using clean layout transitions) */}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       <main className="flex-grow">
         <AnimatePresence mode="wait">
           <motion.div
@@ -192,15 +151,10 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-<<<<<<< HEAD
-      <Footer setActiveTab={setActiveTab} />
-
-=======
       {/* 3. ELEGANT FOOTER */}
       <Footer setActiveTab={setActiveTab} />
 
       {/* 4. CART / BAG SLIDEOUT DRAWER */}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       <BagDrawer
         isOpen={isBagOpen}
         onClose={() => setIsBagOpen(false)}
@@ -210,10 +164,7 @@ export default function App() {
         onClearBag={handleClearBag}
       />
 
-<<<<<<< HEAD
-=======
       {/* 5. FLOATING WHATSAPP CHAT QUICK ACCORD */}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       <div className="fixed bottom-6 right-6 z-30">
         <a
           href="https://wa.me/5512991819041?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20responsavel%20sobre%20cota%C3%A7%C3%A3o%20de%20sneakers."
@@ -226,10 +177,7 @@ export default function App() {
         </a>
       </div>
 
-<<<<<<< HEAD
-=======
       {/* 6. TOAST SNEAKER NOTIFICATION ALERTS */}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       <AnimatePresence>
         {toastMessage && (
           <motion.div
@@ -272,8 +220,4 @@ export default function App() {
 
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
