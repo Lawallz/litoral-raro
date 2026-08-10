@@ -203,10 +203,38 @@ export function AdminDashboard() {
             type="text" 
             required
             value={formData.name}
-            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            onChange={(e) => {
+              const nomeDigitado = e.target.value;
+              let novaMarca = formData.brand;
+              let novoModelo = formData.model;
+
+              // Detecta automaticamente se for Air Max 95
+              if (nomeDigitado.toLowerCase().includes('95')) {
+                novaMarca = 'Nike';
+                novoModelo = 'Air Max 95';
+              } 
+              // Detecta se for Air Max Tn / Plus
+              else if (nomeDigitado.toLowerCase().includes('tn') || nomeDigitado.toLowerCase().includes('plus')) {
+                novaMarca = 'Nike';
+                novoModelo = 'Air Max Tn';
+              }
+              // Detecta se for Asics Gel-NYC
+              else if (nomeDigitado.toLowerCase().includes('gel-nyc') || nomeDigitado.toLowerCase().includes('asics')) {
+                novaMarca = 'Asics';
+                novoModelo = 'ASICS Gel-NYC';
+              }
+
+              setFormData({
+                ...formData, 
+                name: nomeDigitado,
+                brand: novaMarca,
+                model: novoModelo
+              });
+            }}
             className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border bg-white focus:ring-black focus:border-black"
-            placeholder="Ex: Nike Air Max Plus Tn 'Dragon'"
+            placeholder="Ex: Air Max 95 'Neon'"
           />
+          <p className="text-xs text-gray-500 mt-1">⚡ Dica: O sistema preenche a marca e o modelo automaticamente conforme você digita.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
