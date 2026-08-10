@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import { Trash2, Edit2, PlusCircle, LogOut } from 'lucide-react';
+import { Trash2, Edit2, PlusCircle, LogOut, Upload } from 'lucide-react';
 
 export function AdminDashboard() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  
+  // Estado para guardar o arquivo de imagem selecionado no upload
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +16,7 @@ export function AdminDashboard() {
     model: 'Air Max Tn',
     silhouette: 'Low Top',
     price: '',
-    image: '',
+    image: '', // Armazenará a URL final (da nuvem ou link existente)
     tag: 'DISPONÍVEL',
     colors: '',
     description: ''
@@ -40,62 +43,85 @@ export function AdminDashboard() {
     e.preventDefault();
     setLoading(true);
 
-    if (editingId) {
-      // ATUALIZAR PRODUTO EXISTENTE
-      const { error } = await supabase
-        .from('products')
-        .update({
-          name: formData.name,
-          brand: formData.brand,
-          model: formData.model,
-          silhouette: formData.silhouette,
-          price: parseFloat(formData.price),
-          image: formData.image,
-          tag: formData.tag,
-          colors: formData.colors,
-          description: formData.description,
-        })
-        .eq('id', editingId);
+    try {
+      let imageUrl = formData.image;
 
-      setLoading(false);
-      if (error) {
-        alert('Erro ao atualizar: ' + error.message);
-      } else {
+      // Se o usuário selecionou um arquivo de imagem novo para upload
+      if (imageFile) {
+        const fileExt = imageFile.name.split('.').pop();
+        const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const filePath = `${fileName}`;
+
+        // Faz o upload para o Storage do Supabase (Bucket: products)
+        const { error: uploadError } = await supabase.storage
+          .from('products')
+          .upload(filePath, imageFile);
+
+        if (uploadError) {
+          throw new Error('Erro ao enviar imagem: ' + uploadError.message);
+        }
+
+        // Pega a URL pública da imagem enviada
+        const { data: publicUrlData } = supabase.storage
+          .from('products')
+          .getPublicUrl(filePath);
+
+        imageUrl = publicUrlData.publicUrl;
+      }
+
+      if (editingId) {
+        // ATUALIZAR PRODUTO EXISTENTE
+        const { error } = await supabase
+          .from('products')
+          .update({
+            name: formData.name,
+            brand: formData.brand,
+            model: formData.model,
+            silhouette: formData.silhouette,
+            price: parseFloat(formData.price),
+            image: imageUrl,
+            tag: formData.tag,
+            colors: formData.colors,
+            description: formData.description,
+          })
+          .eq('id', editingId);
+
+        if (error) throw error;
         alert('Tênis atualizado com sucesso!');
         setEditingId(null);
-        resetForm();
-        fetchProducts();
-      }
-    } else {
-      // CADASTRAR NOVO PRODUTO
-      const { error } = await supabase.from('products').insert([
-        {
-          name: formData.name,
-          brand: formData.brand,
-          model: formData.model,
-          silhouette: formData.silhouette,
-          price: parseFloat(formData.price),
-          image: formData.image, // Aceita link direto (ex: https://... ou /assets/img/...)
-          tag: formData.tag,
-          colors: formData.colors,
-          description: formData.description,
-          sizes: [38, 39, 40, 41, 42, 43]
-        }
-      ]);
-
-      setLoading(false);
-      if (error) {
-        alert('Erro ao cadastrar: ' + error.message);
       } else {
+        // CADASTRAR NOVO PRODUTO
+        const { error } = await supabase.from('products').insert([
+          {
+            name: formData.name,
+            brand: formData.brand,
+            model: formData.model,
+            silhouette: formData.silhouette,
+            price: parseFloat(formData.price),
+            image: imageUrl,
+            tag: formData.tag,
+            colors: formData.colors,
+            description: formData.description,
+            sizes: [38, 39, 40, 41, 42, 43]
+          }
+        ]);
+
+        if (error) throw error;
         alert('Tênis cadastrado com sucesso!');
-        resetForm();
-        fetchProducts();
       }
+
+      resetForm();
+      fetchProducts();
+    } catch (error: any) {
+      alert('Erro: ' + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleEdit = (product: any) => {
     setEditingId(product.id);
+    setImageFile(null); // Reseta o arquivo ao editar
     setFormData({
       name: product.name,
       brand: product.brand,
@@ -133,6 +159,7 @@ export function AdminDashboard() {
       colors: '',
       description: ''
     });
+    setImageFile(null);
     setEditingId(null);
   };
 
@@ -208,17 +235,29 @@ export function AdminDashboard() {
           </div>
         </div>
 
+        {/* CAMPO DE UPLOAD DE ARQUIVO DE IMAGEM */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">Link ou Caminho da Imagem</label>
-          <input 
-            type="text" 
-            required
-            value={formData.image}
-            onChange={(e) => setFormData({...formData, image: e.target.value})}
-            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm p-3 border bg-white"
-            placeholder="Cole o link direto da imagem ou /assets/img/foto.jpg"
-          />
-          <p className="text-xs text-gray-500 mt-1">💡 Dica: Você pode colar um link direto de imagem da internet ou o caminho local da pasta assets.</p>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">Upload da Imagem do Tênis</label>
+          <div className="flex items-center gap-3">
+            <label className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-lg bg-white shadow-sm cursor-pointer hover:bg-gray-50 transition text-sm text-gray-700 font-medium">
+              <Upload className="h-4 w-4 text-gray-500" />
+              <span>{imageFile ? imageFile.name : (formData.image ? 'Alterar imagem atual...' : 'Selecionar arquivo do computador...')}</span>
+              <input 
+                type="file" 
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.target.files && e.target.files[0]) {
+                    setImageFile(e.target.files[0]);
+                  }
+                }}
+                className="hidden"
+              />
+            </label>
+          </div>
+          {formData.image && !imageFile && (
+            <p className="text-xs text-emerald-600 mt-1 font-medium">✔️ Imagem atual salva no sistema.</p>
+          )}
+          <p className="text-xs text-gray-500 mt-1">💡 Dica: Selecione a foto do tênis direto do seu computador. Ela será enviada para o Supabase Storage automaticamente.</p>
         </div>
 
         <div>
@@ -239,7 +278,7 @@ export function AdminDashboard() {
           className="w-full flex items-center justify-center gap-2 bg-black text-white py-3 px-4 rounded-lg hover:bg-gray-800 transition font-bold tracking-wide disabled:opacity-50 shadow-md"
         >
           <PlusCircle className="h-5 w-5" />
-          {loading ? 'Salvando na Nuvem...' : (editingId ? 'Atualizar Tênis' : 'Salvar Novo Tênis')}
+          {loading ? 'Enviando imagem e salvando...' : (editingId ? 'Atualizar Tênis' : 'Salvar Novo Tênis')}
         </button>
       </form>
 
