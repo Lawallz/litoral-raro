@@ -1,13 +1,30 @@
+<<<<<<< HEAD
 import { useState, useMemo, useEffect } from 'react';
 import { Search, SlidersHorizontal, ArrowUpDown, Filter, X } from 'lucide-react';
 import { Sneaker, Brand, FilterState } from '../types';
 import { supabase } from '../lib/supabase';
+=======
+import { useState, useMemo } from 'react';
+import { Search, SlidersHorizontal, ArrowUpDown, Filter, X } from 'lucide-react';
+import { Sneaker, Brand, FilterState } from '../types';
+import { sneakersData } from '../data';
+
+// Gera a lista de modelos de forma dinâmica a partir das novas propriedades model no data.ts
+const availableModels = Array.from(
+  new Set(
+    sneakersData
+      .filter((s) => s.model)
+      .map((s) => JSON.stringify({ name: s.model, brand: s.brand }))
+  )
+).map((str: string) => JSON.parse(str));
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
 
 interface CatalogProps {
   onAddProductToBag: (sneaker: Sneaker, size: number) => void;
 }
 
 export default function Catalog({ onAddProductToBag }: CatalogProps) {
+<<<<<<< HEAD
   // Estado para armazenar os produtos vindos do Supabase
   const [sneakersData, setSneakersData] = useState<Sneaker[]>([]);
   const [loading, setLoading] = useState(true);
@@ -62,6 +79,9 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
   }, [sneakersData]);
 
   // Filters State
+=======
+  // Filters State (Silhueta Removida)
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   const [filterState, setFilterState] = useState<Omit<FilterState, 'silhouettes'>>({
     search: '',
     brands: [],
@@ -98,11 +118,19 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
         (s) =>
           s.name.toLowerCase().includes(q) ||
           s.brand.toLowerCase().includes(q) ||
+<<<<<<< HEAD
           (s.colors && s.colors.toLowerCase().includes(q))
       );
     }
 
     // 3. Model filter (Subcategorias do menu)
+=======
+          s.colors.toLowerCase().includes(q)
+      );
+    }
+
+    // 3. Model filter (Subcategorias do menu) - NOVO E CORRIGIDO
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
     if (filterState.models.length > 0) {
       result = result.filter((s) => s.model && filterState.models.includes(s.model));
     }
@@ -125,13 +153,21 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
     }
 
     return result;
+<<<<<<< HEAD
   }, [sneakersData, filterState]);
+=======
+  }, [filterState]);
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
 
   // Handler functions
   const handleBrandChange = (brand: Brand) => {
     setFilterState((prev) => {
       const alreadySelected = prev.brands.includes(brand);
       
+<<<<<<< HEAD
+=======
+      // Se desmarcar a marca, limpamos também os modelos filhos dela que estavam ativos
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       const newBrands = alreadySelected
         ? prev.brands.filter((b) => b !== brand)
         : [...prev.brands, brand];
@@ -193,6 +229,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
     setSelectedSize(null);
   };
 
+<<<<<<< HEAD
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
@@ -203,6 +240,8 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
     );
   }
 
+=======
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       
@@ -415,10 +454,18 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                   Modelo não encontrado
                 </h3>
                 <p className="max-w-md text-xs text-gray-400 font-sans leading-relaxed mx-auto">
+<<<<<<< HEAD
                   Não encontramos nenhum modelo com os filtros selecionados no banco de dados. Caso queira encomendar um modelo específico ou consultar tamanhos exclusivos, chame a nossa equipe no WhatsApp!
                 </p>
               </div>
 
+=======
+                  Não encontramos nenhum modelo com os filtros selecionados. Caso queira encomendar um modelo específico ou consultar tamanhos exclusivos, chame a nossa equipe no WhatsApp!
+                </p>
+              </div>
+
+              {/* Botão de conversão direta */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
               <a
                 href={`https://wa.me/5512991819041?text=${encodeURIComponent(
                   `Opa, beleza? Estava navegando no catálogo e não encontrei o modelo que queria (Filtros: ${filterState.brands.join(', ') || 'Geral'}${filterState.search ? ` - Busca: ${filterState.search}` : ''}). Gostaria de consultar a disponibilidade ou fazer uma encomenda exclusiva!`
@@ -501,7 +548,11 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                         )}
                       </div>
 
+<<<<<<< HEAD
                       {/* Informações do Produto */}
+=======
+                      {/* Informações do Produto (Marca, Nome e Preço) */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
                       <div className="px-1 pb-1">
                         <p className="font-mono text-[9px] uppercase text-gray-400 tracking-wider mb-0.5">
                           {sneaker.brand || "Premium"}
@@ -510,18 +561,38 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                           {sneaker.name}
                         </h4>
                         
+<<<<<<< HEAD
+=======
+                        {/* Bloco do Preço */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
                         <div className="flex items-center justify-between pt-0.5">
                           <span className="font-mono text-sm font-black text-black">
                             R$ {sneaker.price?.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) || "Consulte"}
                           </span>
                           
+<<<<<<< HEAD
                           <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
                             {sneaker.tag || "Disponível"}
                           </span>
+=======
+                          {[3, '3', 6, '6'].includes(sneaker.id) ? (
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
+                              A pronta entrega
+                            </span>
+                          ) : (
+                            <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                              Disponível
+                            </span>
+                          )}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
                         </div>
                       </div>
                     </div>
 
+<<<<<<< HEAD
+=======
+                    {/* Botão de Selecionar Tamanho */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
                     <button
                       onClick={() => setActiveSizeSelector(sneaker.id)}
                       className="w-full mt-3 py-3 bg-black hover:bg-neutral-800 text-white font-mono text-[10px] font-bold uppercase tracking-widest transition-colors rounded-xl"
@@ -537,7 +608,11 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
         </main>
       </div>
 
+<<<<<<< HEAD
       {/* Mobile Drawer Filter Panel */}
+=======
+      {/* Mobile Drawer Filter Panel (Silhueta Removida) */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
       {showMobileFilters && (
         <div className="fixed inset-0 z-50 flex lg:hidden">
           <div className="fixed inset-0 bg-black/40" onClick={() => setShowMobileFilters(false)} />
@@ -556,7 +631,13 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
               </button>
             </div>
 
+<<<<<<< HEAD
             <div className="space-y-6 flex-1">
+=======
+            {/* Mobile Filters Content */}
+            <div className="space-y-6 flex-1">
+              {/* Brands & Models (Hierárquico também no Mobile) */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
               <div className="space-y-3">
                 <h3 className="font-display text-xs font-bold uppercase tracking-widest text-black">
                   Marcas & Modelos
@@ -604,6 +685,10 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                 </div>
               </div>
 
+<<<<<<< HEAD
+=======
+              {/* Sizes */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
               <div className="space-y-3 pt-4 border-t border-gray-100">
                 <h3 className="font-display text-xs font-bold uppercase tracking-widest text-black">
                   Tamanhos BR
@@ -629,6 +714,10 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
               </div>
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Mobile filters bottom action */}
+>>>>>>> f1cc4b7281d40a9404dce35946e7466e38a505e4
             <div className="border-t border-gray-100 pt-4 mt-6 space-y-2">
               <button
                 onClick={() => {
