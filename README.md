@@ -8,10 +8,6 @@ E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenv
   </a>
 </p>
 
-<p align="center">
-  💻 <strong>Visualizar App no AI Studio:</strong> <a href="https://ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a">ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a</a>
-</p>
-
 ---
 
 ## Arquitetura & Stack Tecnológica
@@ -35,3 +31,21 @@ E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenv
 1. **Clone o repositório e instale as dependências:**
    ```bash
    npm install
+
+2. **Configure as Variáveis de Ambiente:
+
+Crie um arquivo .env na raiz do projeto baseando-se nas suas credenciais do Supabase:
+
+VITE_SUPABASE_URL=[https://seu-projeto.supabase.co](https://seu-projeto.supabase.co)
+VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
+
+3. **Execute o app em modo de desenvolvimento:
+
+`npm run dev`
+
+Segurança e Cibersegurança (Supabase RLS)
+O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):
+
+Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.
+
+Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.
