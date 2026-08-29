@@ -40,12 +40,13 @@ VITE_SUPABASE_URL=[https://seu-projeto.supabase.co](https://seu-projeto.supabase
 VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
 
 3. **Execute o app em modo de desenvolvimento:**
-
-`npm run dev`
+```bash
+  npm run dev
+```
 
 ## Segurança e Cibersegurança (Supabase RLS)
- * **O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):
+ * **O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):**
 
-* **Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.
+* **Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.**
 
-* **Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.
+* **Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.**
