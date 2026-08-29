@@ -1,16 +1,20 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
 # Litoral Raro — E-commerce & Curadoria de Sneakers
 
 E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenvolvido em **React**, **TypeScript**, **Vite** e **Tailwind CSS**, trazendo uma interface minimalista com foco em alta performance, arquitetura em nuvem e experiência de compra premium.
 
- **Visualizar App no AI Studio:** [ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a](https://ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a)
+<p align="center">
+  <a href="https://ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a" target="_blank">
+    <img width="1600" height="900" alt="Litoral Raro Preview" src="https://github.com/user-attachments/assets/95825065-b409-400e-999a-bb09d2b469b9">
+  </a>
+</p>
+
+<p align="center">
+  💻 <strong>Visualizar App no AI Studio:</strong> <a href="https://ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a">ai.studio/apps/41895d2c-0172-4954-a291-6ff95d0b721a</a>
+</p>
 
 ---
 
-##  Arquitetura & Stack Tecnológica
+## Arquitetura & Stack Tecnológica
 
 * **01 / WEB APP - Litoral Raro**
   * **O que é:** Site responsivo para e-commerce e cotações de tênis exclusivos.
@@ -31,19 +35,3 @@ E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenv
 1. **Clone o repositório e instale as dependências:**
    ```bash
    npm install
-Configure as Variáveis de Ambiente:
-Crie um arquivo .env na raiz do projeto baseando-se nas suas credenciais do Supabase:
-
-Snippet de código
-VITE_SUPABASE_URL=[https://seu-projeto.supabase.co](https://seu-projeto.supabase.co)
-VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
-Execute o app em modo de desenvolvimento:
-
-Bash
-npm run dev
- Segurança e Cibersegurança (Supabase RLS)
-O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):
-
-Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.
-
-Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.
