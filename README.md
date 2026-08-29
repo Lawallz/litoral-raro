@@ -32,20 +32,20 @@ E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenv
    ```bash
    npm install
 
-2. **Configure as Variáveis de Ambiente:
+2. **Configure as Variáveis de Ambiente:**
 
 Crie um arquivo .env na raiz do projeto baseando-se nas suas credenciais do Supabase:
 
 VITE_SUPABASE_URL=[https://seu-projeto.supabase.co](https://seu-projeto.supabase.co)
 VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
 
-3. **Execute o app em modo de desenvolvimento:
+3. **Execute o app em modo de desenvolvimento:**
 
 `npm run dev`
 
-Segurança e Cibersegurança (Supabase RLS)
-O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):
+## Segurança e Cibersegurança (Supabase RLS)
+ * **O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):
 
-Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.
+* **Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.
 
-Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.
+* **Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.
