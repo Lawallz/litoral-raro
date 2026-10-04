@@ -26,23 +26,36 @@ E-commerce/Webstore de curadoria de sneakers raros e edições limitadas. Desenv
 
 ## Como Rodar Localmente
 
-**Prerequisites:** Node.js instalado na máquina.
+Com Node.js e npm instalados:
 
-1. **Clone o repositório e instale as dependências:**
-   ```bash
-   npm install
-
-2. **Configure as Variáveis de Ambiente:**
-
-Crie um arquivo .env na raiz do projeto baseando-se nas suas credenciais do Supabase:
-
-VITE_SUPABASE_URL=[https://seu-projeto.supabase.co](https://seu-projeto.supabase.co)
-VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
-
-3. **Execute o app em modo de desenvolvimento:**
 ```bash
-  npm run dev
+git clone https://github.com/Lawallz/litoral-raro.git
+cd litoral-raro
+npm ci
 ```
+
+Crie um arquivo `.env` na raiz com os valores do seu projeto:
+
+```dotenv
+VITE_SUPABASE_URL=https://seu-projeto.supabase.co
+VITE_SUPABASE_ANON_KEY=sua-chave-anon-publica
+```
+
+Inicie o ambiente de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O script utiliza a porta `3000`; confira o endereço efetivo informado no terminal.
+
+## Comandos de verificação
+
+| Comando | Finalidade |
+| --- | --- |
+| `npm run lint` | Checagem de tipos com TypeScript |
+| `npm run build` | Gerar o frontend em `dist/` |
+| `npm run preview` | Inspecionar o build localmente |
 
 ## Segurança e Cibersegurança (Supabase RLS)
  * **O projeto conta com blindagem nativa de banco de dados utilizando Row Level Security (RLS):**
