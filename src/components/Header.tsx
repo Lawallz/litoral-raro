@@ -36,7 +36,7 @@ export default function Header({
         >
           {/* Agora apontando para a raiz real do projeto */}
           <img 
-            src={new URL('../../assets/img/logo-eraser.png', import.meta.url).href} 
+            src="/assets/img/logo-eraser.png" 
             alt="Litoral Raro Logo" 
             className="h-14 w-auto object-contain" 
           />

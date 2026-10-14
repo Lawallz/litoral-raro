@@ -63,3 +63,14 @@ O script utiliza a porta `3000`; confira o endereço efetivo informado no termin
 * **Leitura Pública (SELECT): Aberta para que qualquer visitante navegue pelo catálogo em tempo real.**
 
 * **Escrita e Modificação (INSERT, UPDATE, DELETE): Restringidas exclusivamente a administradores autenticados através de sessões seguras.**
+
+## Catálogo local temporário
+
+A página inicial e o catálogo usam `sneakersData` em `src/data.ts`, com imagens
+em `public/assets/img`. A vitrine não consulta o Supabase. Para atualizar produtos,
+edite esse arquivo e publique um novo deploy. Os dados são a versão já existente
+no repositório, não uma exportação atual do banco.
+
+O painel `/admin` continua dependendo do Supabase; suas alterações não atualizam
+a vitrine local. O painel é carregado separadamente para que a configuração ou
+indisponibilidade do banco não impeça a abertura da loja.

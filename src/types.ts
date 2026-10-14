@@ -6,6 +6,7 @@ export interface Sneaker {
   id: string;
   name: string;
   brand: Brand;
+  model: string;
   silhouette: Silhouette;
   price: number;
   image: string;
@@ -24,6 +25,7 @@ export interface BagItem {
 export interface FilterState {
   search: string;
   brands: Brand[];
+  models: string[];
   silhouettes: Silhouette[];
   sizes: number[];
   maxPrice: number;

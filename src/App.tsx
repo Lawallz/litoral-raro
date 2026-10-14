@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Home from './components/Home';
 import Catalog from './components/Catalog';
@@ -9,7 +9,7 @@ import BagDrawer from './components/BagDrawer';
 import { Sneaker, BagItem } from './types';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, X, Phone } from 'lucide-react';
-import { AdminPage } from './pages/Admin';
+const AdminPage = lazy(() => import('./pages/Admin').then(module => ({ default: module.AdminPage })));
 
 export default function App() {
   // Navigation active screen
@@ -100,7 +100,7 @@ export default function App() {
 
   // Se estiver na rota admin, renderiza a página de administração diretamente
   if (activeTab === 'admin' || window.location.pathname === '/admin') {
-    return <AdminPage />;
+    return <Suspense fallback={<div className="text-center py-20">Carregando painel...</div>}><AdminPage /></Suspense>;
   }
 
   return (

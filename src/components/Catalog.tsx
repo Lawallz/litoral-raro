@@ -1,56 +1,14 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, ArrowUpDown, Filter, X } from 'lucide-react';
 import { Sneaker, Brand, FilterState } from '../types';
-import { supabase } from '../lib/supabase';
+import { sneakersData } from '../data';
 
 interface CatalogProps {
   onAddProductToBag: (sneaker: Sneaker, size: number) => void;
 }
 
 export default function Catalog({ onAddProductToBag }: CatalogProps) {
-  // Estado para armazenar os produtos vindos do Supabase
-  const [sneakersData, setSneakersData] = useState<Sneaker[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // Função para buscar os produtos no Supabase
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('products') // Nome da sua tabela no Supabase
-        .select('*');
-
-      if (error) throw error;
-
-      if (data) {
-        // Mapeia os dados do banco para o formato esperado pelo tipo Sneaker
-        const formatted: Sneaker[] = data.map((item: any) => ({
-          id: String(item.id),
-          name: item.name || '',
-          brand: item.brand || 'Nike',
-          model: item.model || '',
-          silhouette: item.silhouette || 'Low Top',
-          price: Number(item.price) || 0,
-          image: item.image || '',
-          tag: item.tag || 'DISPONÍVEL',
-          colors: item.colors || '',
-          sizes: Array.isArray(item.sizes) ? item.sizes : [38, 39, 40, 41, 42, 43],
-          description: item.description || ''
-        }));
-        setSneakersData(formatted);
-      }
-    } catch (err) {
-      console.error('Erro ao buscar produtos do Supabase:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  // Gera a lista de modelos de forma dinâmica a partir dos produtos vindos do banco
+  // Catálogo local: não depende da disponibilidade do Supabase.
   const availableModels = useMemo(() => {
     return Array.from(
       new Set(
@@ -192,16 +150,6 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
     setActiveSizeSelector(null);
     setSelectedSize(null);
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <p className="font-mono text-xs text-gray-500 animate-pulse tracking-widest uppercase">
-          Carregando catálogo do banco...
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">

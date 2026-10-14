@@ -166,6 +166,10 @@ export function AdminDashboard() {
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg my-10 font-sans">
       
+      <p role="status" className="mb-6 rounded-lg bg-amber-50 p-4 text-sm text-amber-900">
+        A vitrine está usando o catálogo local de src/data.ts. Alterações neste painel
+        ficam apenas no banco e não aparecem na vitrine durante este modo temporário.
+      </p>
       {/* CABEÇALHO DO PAINEL */}
       <div className="flex justify-between items-center mb-8 border-b pb-4">
         <div>
