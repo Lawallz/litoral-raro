@@ -527,7 +527,7 @@ export const sneakersData: Sneaker[] = [
     brand: 'Nike',
     model: 'Air Max 95',
     silhouette: 'Low Top',
-    price: 349.90,
+    price: 379.90,
     image: '/assets/img/Nike Air Max 95 _Grey Jewel_ .jpg',
     tag: 'DISPONÍVEL',
     colors: 'Grey/Silver',
