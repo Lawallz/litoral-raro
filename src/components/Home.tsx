@@ -3,6 +3,7 @@ import { ArrowRight, HelpCircle, Star, Sparkles, Check } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Sneaker, Testimonial } from '../types';
 import { sneakersData, testimonialsData } from '../data';
+import OptimizedImage from './OptimizedImage';
 
 interface HomeProps {
   setActiveTab: (tab: string) => void;
@@ -48,9 +49,11 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
       <section className="relative h-[85vh] min-h-[550px] w-full flex items-center justify-center overflow-hidden bg-black">
         
         {/* Imagem do Air Max ocupando a tela toda */}
-        <img
-          src="../../assets/img/Air Max 95s.jpg" 
+        <OptimizedImage
+          src="/assets/img/Air Max 95s.jpg"
           alt="Nike Air Max 95"
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover object-center opacity-60"
         />
 
@@ -140,7 +143,7 @@ export default function Home({ setActiveTab, onAddProductToBag }: HomeProps) {
                             {sneaker.tag}
                           </span>
                     )}
-                    <img
+                    <OptimizedImage
                       src={sneaker.image}
                       alt={sneaker.name}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

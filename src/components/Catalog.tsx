@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, ArrowUpDown, Filter, X } from 'lucide-react';
 import { Sneaker, Brand, FilterState } from '../types';
 import { sneakersData } from '../data';
+import OptimizedImage from './OptimizedImage';
 
 interface CatalogProps {
   onAddProductToBag: (sneaker: Sneaker, size: number) => void;
@@ -396,7 +397,7 @@ export default function Catalog({ onAddProductToBag }: CatalogProps) {
                             {sneaker.tag}
                           </span>
                         )}
-                        <img
+                        <OptimizedImage
                           src={sneaker.image}
                           alt={sneaker.name}
                           className="h-full w-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-102"

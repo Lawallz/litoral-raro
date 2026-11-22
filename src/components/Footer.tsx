@@ -18,7 +18,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <div className="flex items-center space-x-2">
               {/* Logo em imagem com tamanho controlado e responsivo */}
               <img 
-                src="../../assets/img/logo-eraser.png" 
+                src="/assets/img/logo-eraser.png"
                 alt="Litoral Raro Logo" 
                 className="h-9 w-auto object-contain"
                 referrerPolicy="no-referrer"

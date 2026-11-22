@@ -157,7 +157,7 @@ export default function Contact({ setActiveTab }: ContactProps) {
           {/* Aesthetic shoe photo on podium underneath */}
           <div className="overflow-hidden rounded-2xl border border-gray-100 shadow-xs relative h-64 bg-neutral-950">
             <img
-              src="../assets/img/Air Max Dn8 Black 2.jpg"
+              src="/assets/img/Air Max Dn8 Black 2.jpg"
               alt="High-end exclusive sneaker"
               className="h-full w-full object-cover opacity-80"
               referrerPolicy="no-referrer"
