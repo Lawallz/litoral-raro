@@ -1,5 +1,6 @@
 import { ArrowRight, Phone, CheckCircle2, ShieldAlert, Award, Headphones } from 'lucide-react';
 import { processStepsData } from '../data';
+import OptimizedImage from './OptimizedImage';
 
 interface ProcessProps {
   setActiveTab: (tab: string) => void;
@@ -57,7 +58,7 @@ export default function Process({ setActiveTab }: ProcessProps) {
 
               {/* Step visual image */}
               <div className="relative h-64 w-full overflow-hidden rounded-xl bg-gray-50 mt-auto flex items-center justify-center">
-                <img
+                <OptimizedImage
                   src={step.image}
                   alt={step.title}
                   className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
